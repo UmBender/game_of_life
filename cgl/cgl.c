@@ -104,4 +104,14 @@ MAP read_map(char archive[]) {
 	return new_map;
 }
 
+MAP create_map(size_t lines, size_t columns) {
+
+	MAP map;
+	map.lines = lines;
+	map.columns = columns;
+	map.grid = (int*) malloc(lines * columns * sizeof(int));
+
+	return map;
+}
+
 
