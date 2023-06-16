@@ -38,7 +38,6 @@ void split_maps(MAP *map1, MAP *map2) {
 void next_state(MAP *map1, MAP *map2) {
 	for (int i = 0; i < map1->lines; i++) {
 		for (int j = 0; j < map1->columns; j++) {
-			int cell_state = map1->grid[i * map1->columns + j];
 			int sum_around = 0;
 			for (int li = -1; li < 2; li++) {
 				if(i + li >= 0 && i + li < map1->lines) {
