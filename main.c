@@ -12,11 +12,10 @@ int main()
 	int l, c;
 	l = 37;
 	c = 143;
-	MAP map1, map2, map3;
+	MAP map1, map2;
 
 	map1 = create_map(l, c);
 	map2 = create_map(l, c);
-	map3 =read_map("maps/gospel_glinder");
 
 	fill_map(&map1);
 	print_mapa(&map1);
