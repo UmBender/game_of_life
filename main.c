@@ -12,31 +12,24 @@ int main()
 	int l, c;
 	l = 37;
 	c = 143;
-	//scanf("%i", &l);
-	//scanf("%i", &c);
+	MAP map1, map2, map3;
 
-	int mapa1[l * c];
-	int mapa2[l * c];
+	map1 = create_map(l, c);
+	map2 = create_map(l, c);
+	map3 =read_map("maps/gospel_glinder");
 
-	int *atual = mapa1;
-	int *proximo = mapa2;
-
-	fill_map(atual, l, c);
-	print_mapa(atual, l, c);
+	fill_map(&map1);
+	print_mapa(&map1);
 
 	for (size_t i = 0; i < 10000; i++) {
 		printf("\n");
-		next_state(atual, proximo, l, c);
+		next_state(&map1, &map2);
 
-		int *segura =  atual;
-		atual = proximo;
-		proximo = segura;
-
-		print_mapa(atual, l, c);
-		usleep(100000);
+		split_maps(&map1, &map2);
+		print_mapa(&map1);
+		usleep(200000);
 		system("clear");
 	}
-	
 
 	return 0;
 }
