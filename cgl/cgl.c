@@ -6,7 +6,7 @@ void fill_map(int mapa[], size_t l, size_t c) {
 	for (size_t i = 0; i < l; i++) {
 		for (int j = 0; j < c; j++) {
 			mapa[i * c + j] = 0;
-			if((rand() %100) > 50) {
+			if((rand() %100) > 85) {
 				mapa[i * c + j] = 1;
 			}
 		}
@@ -74,4 +74,37 @@ void next_state(int mapa1[], int mapa2[], size_t l, size_t c) {
 		}
 	}
 }
+
+
+
+
+MAP read_map(char archive[]) {
+	MAP new_map;
+	FILE* f;
+	f = fopen(archive, "r");
+	if(f == NULL) {
+		fprintf(stderr,"Open file error\n");
+		new_map.grid = NULL;
+		new_map.lines =0;
+		new_map.columns = 0;
+		return new_map;
+	}
+	fscanf(f,"%zu %zu", &new_map.lines, &new_map.columns);
+	new_map.grid = (int*) malloc(new_map.lines * new_map.columns * sizeof(int));
+	for (size_t i = 0; i < new_map.lines; i++) {
+		for (size_t j = 0; j < new_map.columns; j++) {
+			char teste;
+			fscanf(f,"%c", &teste);
+			new_map.grid[i * new_map.columns + j] = ((teste == '#')? 1 : 0);
+
+
+		}
+	}
+
+	fclose(f);
+	return new_map;
+
+
+}
+
 
