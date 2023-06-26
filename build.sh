@@ -2,7 +2,7 @@
 
 touch *.c
 touch ./cgl/*.*
-gcc main.c ./cgl/cgl.c  -o main -Wall  -lm -O3
+gcc main.c ./cgl/cgl.c ./cgl/parser.c  -o main -Wall  -lm -O3
 
 
-./main
+./main -L !@#%
