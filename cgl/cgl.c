@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "cgl.h"
@@ -26,6 +27,21 @@ void print_mapa(MAP *map) {
 		}
 		printf("\n");
 	}
+}
+
+void print_map_letter(MAP *map, char render_letter) {
+	for (size_t i = 0; i < map->lines; i++) {
+		for (size_t j = 0; j < map->columns; j++) {
+			if(map->grid[i * map->columns + j]) {
+				printf("%c", render_letter);
+			}else{
+				printf(" ");
+			}
+		}
+		printf("\n");
+
+	}
+
 }
 
 void split_maps(MAP *map1, MAP *map2) {
@@ -105,11 +121,11 @@ MAP read_map(char archive[]) {
 
 MAP create_map(size_t lines, size_t columns) {
 
-	MAP map;
-	map.lines = lines;
-	map.columns = columns;
-	map.grid = (int*) malloc(lines * columns * sizeof(int));
-
+	MAP map = (MAP) {
+		.lines = lines,
+		.columns = columns,
+		.grid = (int*) malloc(lines * columns * sizeof(int)),
+	};
 	return map;
 }
 
