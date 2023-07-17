@@ -8,3 +8,5 @@
 | Colors        | (R,G,B)            |
 | Letter        | ASCII              |
 
+- Generation option
+
